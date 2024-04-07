@@ -9,33 +9,33 @@ const routes = router.options.routes.filter(
 </script>
 
 <template>
-  <el-container class="layout-container" style="height: 100%">
-    <el-aside width="200px">
-      <el-scrollbar>
-        <el-menu router :default-active="router.currentRoute.value.path">
-          <el-menu-item
+  <ElContainer class="layout-container" style="height: 100%">
+    <ElAside width="200px">
+      <ElScrollbar>
+        <ElMenu router :default-active="router.currentRoute.value.path">
+          <ElMenuItem
             v-for="item in routes"
             :key="item.path"
             :index="item.path"
           >
-            <el-icon>
+            <ElIcon>
               <Component :is="item.children![0].meta!.icon" />
-            </el-icon>
+            </ElIcon>
             <span>{{ item.children![0].meta!.title }}</span>
-          </el-menu-item>
-        </el-menu>
-      </el-scrollbar>
-    </el-aside>
+          </ElMenuItem>
+        </ElMenu>
+      </ElScrollbar>
+    </ElAside>
 
-    <el-container>
-      <el-header style="text-align: right; font-size: 12px">
+    <ElContainer>
+      <ElHeader style="text-align: right; font-size: 12px">
         <div class="toolbar">
           <NavBar />
         </div>
-      </el-header>
+      </ElHeader>
 
-      <el-main>
-        <el-scrollbar>
+      <ElMain>
+        <ElScrollbar>
           <RouterView v-slot="{ Component, route }">
             <KeepAlive v-if="!route.meta.noCache">
               <Component :is="Component" :key="route.path" />
@@ -43,10 +43,10 @@ const routes = router.options.routes.filter(
 
             <Component v-else :is="Component" :key="route.path" />
           </RouterView>
-        </el-scrollbar>
-      </el-main>
-    </el-container>
-  </el-container>
+        </ElScrollbar>
+      </ElMain>
+    </ElContainer>
+  </ElContainer>
 </template>
 
 <style scoped>
