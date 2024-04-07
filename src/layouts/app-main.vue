@@ -19,7 +19,7 @@ const routes = router.options.routes.filter(
             :index="item.path"
           >
             <ElIcon>
-              <Component :is="item.children![0].meta!.icon" />
+              <component :is="item.children![0].meta!.icon" />
             </ElIcon>
             <span>{{ item.children![0].meta!.title }}</span>
           </ElMenuItem>
@@ -38,10 +38,10 @@ const routes = router.options.routes.filter(
         <ElScrollbar>
           <RouterView v-slot="{ Component, route }">
             <KeepAlive v-if="!route.meta.noCache">
-              <Component :is="Component" :key="route.path" />
+              <component :is="Component" :key="route.path" />
             </KeepAlive>
 
-            <Component v-else :is="Component" :key="route.path" />
+            <component v-else :is="Component" :key="route.path" />
           </RouterView>
         </ElScrollbar>
       </ElMain>
