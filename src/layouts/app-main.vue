@@ -1,37 +1,28 @@
 <script lang="ts" setup>
 const router = useRouter()
 
-const routes = router.options.routes.filter(
-  (item) =>
-    item.children![0].meta!.layout === 'app-main' &&
-    !item.children![0].meta!.hidden,
-)
+const isShowSideBar = ref(false)
+const width = ref('200px')
 </script>
 
 <template>
   <ElContainer class="layout-container" style="height: 100%">
-    <ElAside width="200px">
-      <ElScrollbar>
-        <ElMenu router :default-active="router.currentRoute.value.path">
-          <ElMenuItem
-            v-for="item in routes"
-            :key="item.path"
-            :index="item.path"
-          >
-            <ElIcon>
-              <component :is="item.children![0].meta!.icon" />
-            </ElIcon>
-            <span>{{ item.children![0].meta!.title }}</span>
-          </ElMenuItem>
-        </ElMenu>
-      </ElScrollbar>
-    </ElAside>
+    <SideBar :style="{ width }" class="hidden transition-all lg:block" />
 
     <ElContainer>
-      <ElHeader style="text-align: right; font-size: 12px">
-        <div class="toolbar">
-          <NavBar />
+      <ElHeader class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button
+            class="icon-btn i-carbon-menu hidden lg:block"
+            @click="width === '200px' ? (width = '0') : (width = '200px')"
+          ></button>
+          <button
+            class="icon-btn i-carbon-menu lg:hidden"
+            @click="isShowSideBar = true"
+          ></button>
+          <div>{{ router.currentRoute.value.meta.title }}</div>
         </div>
+        <NavBar />
       </ElHeader>
 
       <ElMain>
@@ -46,19 +37,32 @@ const routes = router.options.routes.filter(
         </ElScrollbar>
       </ElMain>
     </ElContainer>
+
+    <ElDrawer
+      v-model="isShowSideBar"
+      direction="ltr"
+      size="240px"
+      :with-header="false"
+    >
+      <SideBar width="200px" />
+    </ElDrawer>
   </ElContainer>
 </template>
 
-<style scoped>
+<style>
 .layout-container .el-header {
   position: relative;
-  background-color: var(--el-color-primary-light-7);
   color: var(--el-text-color-primary);
+  border-bottom: 1px solid var(--el-color-info-light-7);
 }
 
 .layout-container .el-aside {
   color: var(--el-text-color-primary);
-  background: var(--el-color-primary-light-8);
+  border-right: 1px solid var(--el-color-info-light-8);
+}
+
+.layout-container .el-drawer .el-aside {
+  border-right: none;
 }
 
 .layout-container .el-menu {
@@ -67,13 +71,5 @@ const routes = router.options.routes.filter(
 
 .layout-container .el-main {
   padding: 0;
-}
-
-.layout-container .toolbar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  right: 20px;
 }
 </style>
