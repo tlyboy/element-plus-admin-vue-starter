@@ -11,16 +11,18 @@ const width = ref('200px')
 
     <ElContainer>
       <ElHeader class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
+        <div class="flex w-[calc(100%-64px)] items-center gap-2">
           <button
-            class="icon-btn i-carbon-menu hidden lg:block"
+            class="icon-btn i-carbon-menu hidden text-xl lg:block"
             @click="width === '200px' ? (width = '0') : (width = '200px')"
           ></button>
           <button
-            class="icon-btn i-carbon-menu lg:hidden"
+            class="icon-btn i-carbon-menu text-xl lg:hidden"
             @click="isShowSideBar = true"
           ></button>
-          <div>{{ router.currentRoute.value.meta.title }}</div>
+          <div class="w-[calc(100%-32px)] truncate">
+            {{ router.currentRoute.value.meta.title }}
+          </div>
         </div>
         <NavBar />
       </ElHeader>

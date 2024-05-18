@@ -16,7 +16,7 @@ const routes = router.options.routes.filter(
           <ElIcon>
             <component :is="item.children![0].meta!.icon" />
           </ElIcon>
-          <span>{{ item.children![0].meta!.title }}</span>
+          <span class="truncate">{{ item.children![0].meta!.title }}</span>
         </ElMenuItem>
       </ElMenu>
     </ElScrollbar>
