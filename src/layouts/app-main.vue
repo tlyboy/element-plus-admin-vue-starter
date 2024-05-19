@@ -6,7 +6,10 @@ const width = ref('200px')
 </script>
 
 <template>
-  <ElContainer class="layout-container" style="height: 100%">
+  <ElContainer
+    class="layout-container text-gray-700 dark:text-gray-200"
+    style="height: 100%"
+  >
     <SideBar :style="{ width }" class="hidden transition-all lg:block" />
 
     <ElContainer>
