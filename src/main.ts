@@ -5,7 +5,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-// @ts-ignore
 import { parseTime, resetForm } from '~/utils/ruoyi'
 
 import App from './App.vue'
