@@ -1,9 +1,39 @@
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
 
-.app-container {
-  padding: 20px;
-}
-
 .mb8 {
   margin-bottom: 8px;
+}
+
+.pagination-container {
+  position: relative;
+  height: 25px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  padding: 10px 20px !important;
+}
+
+.el-dialog .pagination-container {
+  position: static !important;
+}
+
+.pagination-container .el-pagination {
+  right: 0;
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  .pagination-container .el-pagination > .el-pagination__jump {
+    display: none !important;
+  }
+  .pagination-container .el-pagination > .el-pagination__sizes {
+    display: none !important;
+  }
+}
+
+.top-right-btn {
+  margin-left: auto;
+}
+
+.app-container {
+  padding: 20px;
 }

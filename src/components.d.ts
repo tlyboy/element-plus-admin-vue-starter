@@ -18,6 +18,8 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     NavBar: typeof import('./components/NavBar.vue')['default']
+    Pagination: typeof import('./components/Pagination.vue')['default']
+    RightToolbar: typeof import('./components/RightToolbar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SideBar: typeof import('./components/SideBar.vue')['default']
