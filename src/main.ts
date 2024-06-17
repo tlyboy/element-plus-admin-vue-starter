@@ -6,6 +6,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { parseTime, resetForm } from '~/utils/ruoyi'
+import plugins from './plugins'
 
 import App from './App.vue'
 import router from './router'
@@ -26,5 +27,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.config.globalProperties.parseTime = parseTime
 // @ts-ignore
 app.config.globalProperties.resetForm = resetForm
+
+app.use(plugins)
 
 app.mount('#app')
