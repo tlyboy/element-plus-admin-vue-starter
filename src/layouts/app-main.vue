@@ -34,10 +34,10 @@ const width = ref('200px')
         <ElScrollbar>
           <RouterView v-slot="{ Component, route }">
             <KeepAlive v-if="!route.meta.noCache">
-              <component :is="Component" :key="route.path" />
+              <component :is="Component" />
             </KeepAlive>
 
-            <component v-else :is="Component" :key="route.path" />
+            <component v-else :is="Component" />
           </RouterView>
         </ElScrollbar>
       </ElMain>
